@@ -1,0 +1,71 @@
+<?php
+/*
+ * Adverboard Template for advert form
+*
+ * @author Oleg Khuda
+ */
+
+/*
+ * @var $this Ab_Adverboard_Block_Form
+ * @see Ab_Adverboard_Block_Form
+ */
+
+?>
+<div id="advert_list_messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="page-title">
+    <h1><?php echo Mage::helper('ab_adverboard')->__('Add advert to Advert Board') ?></h1>
+</div>
+<form action="<?php echo $this->getFormActionUrl(); ?>" id="adverboardForm" method="post" class="scaffold-form" enctype="multipart/form-data">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('ab_adverboard')->__('Advert Information') ?></h2>
+        <p class="required"><?php echo Mage::helper('ab_adverboard')->__('* Required Fields') ?></p>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('ab_adverboard')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input
+                            name="name"
+                            id="name"
+                            title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('ab_adverboard')->__('Name')) ?>"
+                            value=""
+                            class="input-text required-entry validate-no-html-tags validate-alphanum-with-spaces"
+                            type="text" />
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <label for="content" class="required"><em>*</em><?php echo Mage::helper('ab_adverboard')->__('Advert Content') ?></label>
+                <div class="input-box">
+                    <textarea
+                        name="content"
+                        id="advert_content"
+                        title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('ab_adverboard')->__('Advert Content')) ?>"
+                        class="required-entry input-text validate-no-html-tags validate-adverboard-test"
+                        cols="5"
+                        rows="3"></textarea>
+                </div>
+                <label for="image"><?php echo Mage::helper('ab_adverboard')->__('Advert Image') ?></label>
+                <div class="input-box">
+                    <input
+                        type="file"
+                        name="image"
+                        id="advert_image"
+                        title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('ab_adverboard')->__('Image')) ?>"
+                        class="input-text"
+                        />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+<!--        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />-->
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('ab_adverboard')->__('Submit')) ?>" class="button"><span><span><?php echo Mage::helper('ab_adverboard')->__('Submit') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('adverboardForm', true);
+//]]>
+</script>

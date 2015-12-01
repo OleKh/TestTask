@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<!--
+/**
+*   Module configuration
+*   @author Oleg Khuda
+*/
+-->
+<config>
+    <modules>
+        <Ab_Adverboard>
+            <version>1.0.1</version>
+        </Ab_Adverboard>
+    </modules>
+    <global>
+        <models>
+            <ab_adverboard>
+                <class>Ab_Adverboard_Model</class>
+                <resourceModel>adverboard_resource</resourceModel>
+            </ab_adverboard>
+            <adverboard_resource>
+                <class>Ab_Adverboard_Model_Resource</class>
+                <entities>
+                    <adverboard>
+                        <table>ab_adverboard</table>
+                    </adverboard>
+                </entities>
+            </adverboard_resource>
+        </models>
+        <helpers>
+            <ab_adverboard>
+                <class>Ab_Adverboard_Helper</class>
+            </ab_adverboard>
+        </helpers>
+        <blocks>
+            <ab_adverboard>
+                <class>Ab_Adverboard_Block</class>
+            </ab_adverboard>
+        </blocks>
+        <resources>
+            <ab_adverboard_setup>
+                <setup>
+                    <module>Ab_Adverboard</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </ab_adverboard_setup>
+        </resources>
+
+        <events>
+            <before_advert_display>
+                <observers>
+                    <ab_adverboard>
+                        <class>ab_adverboard/observer</class>
+                        <method>beforeAdvertDisplay</method>
+                    </ab_adverboard>
+                </observers>
+            </before_advert_display>
+        </events>
+    </global>
+    <frontend>
+        <routers>
+            <ab_adverboard>
+                <use>standard</use>
+                <args>
+                    <module>Ab_Adverboard</module>
+                    <frontName>adverboard</frontName>
+                </args>
+            </ab_adverboard>
+        </routers>
+        <layout>
+            <updates>
+                <ab_adverboard>
+                    <file>ab_adverboard.xml</file>
+                </ab_adverboard>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ab_Adverboard before="Mage_Adminhtml">Ab_Adverboard_Adminhtml</Ab_Adverboard>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <ab_adverboard>
+                    <file>ab_adverboard.xml</file>
+                </ab_adverboard>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <adverboard>
+            <view>
+                <enabled>1</enabled>
+                <items_per_page>20</items_per_page>
+                <days_difference>3</days_difference>
+            </view>
+        </adverboard>
+    </default>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--
+/**
+* Module initial config
+ *
+ * @author Oleg Khuda
+*/
+-->
+
+<config>
+    <modules>
+        <Test_Requestprice>
+            <active>true</active>
+            <codePool>local</codePool>
+<!--            <depends>
+                <Mage_Adminhtml />
+            </depends>-->
+        </Test_Requestprice>
+    </modules>
+</config>

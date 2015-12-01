@@ -1,0 +1,46 @@
+<?php
+/*
+ * Adverboard Template for advert list
+*
+ * @author Oleg Khuda
+ */
+
+/*
+ * @var $this Ab_Adverboard_Block_List
+ * @see Ab_Adverboard_Block_List
+ */
+?>
+<div id="advert_list_messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('ab_adverboard')->__('Advert Board') ?></h1>
+</div>
+<div class="advert_list_view">
+    <table border="1" style="width:100%;">
+        <tr>
+            <td style="width:20%; text-align: center;">
+                <a href="<?php echo $this->getDirListUrl('asc') ?>"> ASC </a> |
+                <a href="<?php echo $this->getDirListUrl('desc') ?>"> DESC </a>
+            </td>
+            <td style="width:60%;">Advert Name</td>
+            <td style="width:20%; text-align: center;"> Image</td>
+        </tr>
+        <?php foreach ($this->getCollection() as $advertItem): ?>
+            <tr>
+                <td>
+                    <?php echo $this->formatDate($advertItem->getPublished_at(), 'short', true); ?>
+                </td>
+                <td>
+                    <a href="<?php echo $this->getItemUrl($advertItem) ?>">
+                        <?php echo $this->escapeHtml($advertItem->getName()) ?>
+                    </a>
+                </td>
+                <td style="text-align: center;">  <?php if ($imageUrl = $this->getImageUrl($advertItem, 100)): ?>
+                        <img src="<?php echo $imageUrl ?>"
+                             alt="<?php echo $this->escapeHtml($advertItem->getTitle()); ?>"/>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+<?php echo $this->getPager() ?>

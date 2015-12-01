@@ -1,0 +1,38 @@
+<?php
+/*
+ * Adverboard Template for advert item
+*
+ * @author Oleg Khuda
+ */
+
+/*
+ * @var $this Ab_Adverboard_Block_Item
+ * @see Ab_Adverboard_Block_Item
+ */
+
+?>
+
+<?php $_advertItem = $this->helper('ab_adverboard')->getAdvertItemInstance(); ?>
+
+<div id="advert_item_messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="page-title">
+    <h1><?php echo $this->escapeHtml($_advertItem->getName()) ?></h1>
+    <div class="advert_item_subtitle">
+        <?php echo $this->formatDate($_advertItem->getPublished_at(), 'short', true) ?>
+    </div>
+</div>
+
+<div class="advert_item_view">
+    <div class="advert_item_image">
+        <?php if ($imageUrl = $this->getImageUrl($_advertItem, 400)): ?>
+            <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_advertItem->getTitle()) ?>"/></p>
+        <?php endif; ?>
+    </div>
+    <div class="advert_item_content"><?php echo $_advertItem->getContent() ?></div>
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo Mage::helper('ab_adverboard')->__('Return to list') ?>
+        </a>
+    </div>
+</div>

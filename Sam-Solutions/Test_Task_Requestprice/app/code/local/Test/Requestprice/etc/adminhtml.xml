@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+ /*
+Request Price Admin config
+ @author Oleg Khuda
+ */
+-->
+
+<config>
+    <menu>
+        <customer translate="title" module="customer">
+            <children>
+                <requestprice translate="title" module="test_requestprice">
+                    <title>Price Requests</title>
+                    <action>adminhtml/requestprice</action>
+                    <sort_order>200</sort_order>
+                </requestprice>
+            </children>
+        </customer>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <requestprice translate="title" module="test_requestprice">
+                        <title>Request Price</title>
+                        <sort_order>65</sort_order>
+                        <children>
+                            <manage translate="title">
+                                <title>Manage Request Price</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save Request Price</title>
+                                        <sort_order>0</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete Request Price</title>
+                                        <sort_order>10</sort_order>
+                                    </delete>
+                                </children>
+                            </manage>
+                        </children>
+                    </requestprice>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <requestprice translate="title" module="test_requestprice">
+                                        <title>Request Price Management</title>
+                                    </requestprice>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

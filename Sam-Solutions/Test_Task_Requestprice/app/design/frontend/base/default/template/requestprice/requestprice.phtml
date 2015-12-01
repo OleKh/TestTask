@@ -1,0 +1,114 @@
+<div id="container">
+    <div id="popup_window" style="display: none;">
+        <form id="request" action="<?php echo $this->getFormActionUrl(); ?>" name="request" method="post">
+            <div class="fieldset">
+                <p class="required"><?php echo Mage::helper('test_requestprice')->__('* Required Fields') ?></p>
+                <ul class="form-list">
+                    <li class="fields">
+                        <div class="field">
+                            <label for="name" class="required"><em>*</em><?php echo Mage::helper('test_requestprice')->__('Name') ?> </label>
+                            <div class="input-box">
+                                <input
+                                    name="name"
+                                    id="name"
+                                    title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('test_requestprice')->__('Name')) ?>"
+                                    value=""
+                                    class="input-text required-entry validate-no-html-tags validate-alphanum-with-spaces"
+                                    type="text"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="email" class="required"><em>*</em><?php echo Mage::helper('test_requestprice')->__('Email') ?> </label>
+                            <div class="input-box">
+                                <input name="email" id="email"
+                                       title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('test_requestprice')->__('Email')) ?>"
+                                       value=""
+                                       class="input-text required-entry validate-email"
+                                       type="email" autocapitalize="off" autocorrect="off" spellcheck="false"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="wide">
+                        <label for="comment"><?php echo Mage::helper('test_requestprice')->__('Comment') ?> </label>
+                        <div class="input-box">
+                            <textarea name="comment" id="comment" cols="5" rows="3"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <input type="hidden" name="product_id" value="<?php echo Mage::registry('current_product')->getId() ?>"/>
+            <div class="buttons-set">
+                <button onclick="requestForm.submit(this)"
+                        class="button btn-cart"
+                        title="В корзину" type="button"><span><span>В корзину</span></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var requestForm = new VarienForm('request');
+
+    requestForm.submit = function (button, url) {
+
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+            if (url) {
+                form.action = url;
+            }
+            var e = null;
+
+            // Start of our new ajax code
+            if (!url) {
+                url = jQuery('#request').attr('action');
+            }
+            var data = jQuery('#request').serialize();
+            data += '&isAjax=1';
+            jQuery('#ajax_loader').show();
+            try {
+                jQuery.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: 'post',
+                    data: data,
+                    success: function (data) {
+                        jQuery('#ajax_loader').hide();
+                        if (data.status == 'ERROR') {
+                            alert(data.message);
+                        } else {
+                            jQuery('.price-info').replaceWith('<div class="price-info" ><b style="color: green;">The request was sent succesfully</b></div>');
+                            Windows.closeAll();
+                        }
+                    }
+                });
+            } catch (e) {
+            }
+        }
+    }.bind(requestForm);
+
+
+    function showPopUp() {
+
+        var contentWin = new Window({ hideEffect: Element.hide, showEffect: Element.show, destroyOnClose: true });
+        contentWin.setContent('popup_window', true, true);
+        contentWin.showCenter();
+
+        // Set up a windows observer, check ou debug window to get messages
+        myObserver = {
+            onDestroy: function (eventName, win) {
+                if (win == contentWin) {
+                    $('container').appendChild($('popup_window').hide());
+                    contentWin = null;
+                    Windows.removeObserver(this);
+                }
+//                debug(eventName + " on " + win.getId())
+            }
+        };
+        Windows.addObserver(myObserver);
+    }
+
+    //]]>
+</script>
