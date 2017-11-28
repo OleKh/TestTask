@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #F5F9FB;
+    font-size: 14px;
+    color: #000;
+    font-family: Arial, Sans-Serif;
+}
+
+a {
+    color: #4B8EDB;
+    text-decoration: none;
+
+}
+
+#wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 945px;
+    position: relative;
+}
+
+#header {
+    height: 75px;
+    margin-top: 0;
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+#content {
+    border: 1px solid red;
+    font-family: Arial, Sans-Serif;
+    overflow: hidden;
+    min-height: 300px;
+    padding: 10px;
+}
+
+#content h1 a {
+    color: #12120D;
+    font-weight: bold;
+}
+
+.register-link {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding-top: 100px;
+}
+.register-link a {
+    font-size: 26px;
+    text-decoration: underline ;
+}
+.register-form, .account-form {
+    width: 500px;
+}
+
+.register-form div,
+.account-form div {
+    padding-top: 20px;
+}
+
+.register-form input {
+    width: 200px;
+}
+
+.login span {
+    padding-left: 10px;
+    color: red;
+    font-size: 10px;
+}
+
+.pass span {
+    padding-left: 10px;
+    color: red;
+    font-size: 10px;
+}
+
+#footer {
+    border: 1px solid blue;
+    height: 75px;
+}

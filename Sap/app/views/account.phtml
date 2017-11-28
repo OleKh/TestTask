@@ -1,0 +1,45 @@
+<h1>Account Page</h1>
+<?php if (!$data['login_id']): ?>
+    <div class="register-link">
+        <a href="/register">Please Register</a>
+    </div>
+<?php else: ?>
+    <div class="account-form">
+        <form action="/account" method="POST">
+            <input name="login_id" type="hidden" value="<?php echo $data['login_id'] ?>"/>
+            <div>
+                <label for="name">Имя</label>
+                <input id="name" type="text" name="firstname" value="">
+            </div>
+            <div>
+                <label for="lastname">Фамилия </label>
+                <input id="lastname" type="text" name="lastname" value="">
+            </div>
+            <div>
+                <label for="dob">Дата рождения</label>
+                <input id="dob" type="text" name="dob" value="">
+                <span>10 символов, пример - 31.12.2000 </span>
+            </div>
+            <div>
+                <label for="sex">Пол</label>
+                <select id ="sex" name="sex">
+                    <option value=""></option>
+                    <option value="1" selected> м</option>
+                    <option value="2"> ж</option>
+                </select>
+            </div>
+            <div>
+                <label for="address">Адрес доставки </label>
+                <input id="address" type="text" name="address" value="">
+            </div>
+            <div>
+                <label for="telephone">Телефон</label>
+                <input id="telephone" type="text" name="telephone" value="">
+            </div>
+            <div>
+                <button>Submit</button>
+            </div>
+        </form>
+    </div>
+
+<?php endif; ?>

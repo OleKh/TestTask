@@ -1,0 +1,45 @@
+<h1>Register Page</h1>
+<div class="register-form">
+    <form name="rigister-form" action="/register" method="POST" onsubmit="return validateForm()">
+        <div class="login">
+            <label for="login"> Логин * </label>
+            <input id = "login" type="text" name="login" value="">
+            <span> 10 символов от a-zA-Z </span>
+        </div>
+        <div class="pass">
+            <label for="pass"> Пароль * </label>
+            <input id="pass" type="text" name="password" value="">
+            <span>4 символа от 0-9 </span>
+        </div>
+        <div>
+            <label for="email">Электронная почта * </label>
+            <input id="email" type="text" name="email" value="">
+        </div>
+        <div>* - required fields</div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    function validateForm() {
+        var login = document.forms["rigister-form"]["login"].value;
+        if (login == "") {
+            alert("Login must be filled out");
+            return false;
+        }
+        var password = document.forms["rigister-form"]["password"].value;
+        if (password == "") {
+            alert("Password must be filled out");
+            return false;
+        }
+        var email = document.forms["rigister-form"]["email"].value;
+        if (email == "") {
+            alert("Email must be filled out");
+            return false;
+        }
+    }
+    //]]>
+</script>

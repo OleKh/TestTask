@@ -1,0 +1,10 @@
+<h1>Home Page</h1>
+<?php if ($data['message']): ?>
+    <div class="register-link">
+        <?php echo $data['message']; ?>
+    </div>
+<?php else: ?>
+    <div class="register-link">
+        <a href="/register">Please Register</a>
+    </div>
+<?php endif; ?>
