@@ -1,5 +1,5 @@
 <?php
 define('HOSTNAME', 'localhost');
 define('USERNAME', 'root');
-define('PASSWORD', '');
+define('PASSWORD', '181276');
 define('DATABASE', 'sap_test');
