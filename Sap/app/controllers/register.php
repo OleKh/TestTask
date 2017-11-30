@@ -47,28 +47,22 @@ class Register extends Controller
         $params = 'link=1&login_id=' . $data['login_id'] . '&login=' . $data['login'] . '&pass=' . $data['pass'] . '&email=' . $data['email'];
         $params = base64_encode($params);
         $link = 'http://' . $_SERVER['SERVER_NAME'] . '/link.php?q=' . $params;
-//       echo $link;
-//        echo "<br/>";
-//        $link = base64_decode($link);
-//        echo $link;
         $to = $data['email'];
         $subject = 'Link to fill form';
         $message = $link;
         $headers = 'From: site@localhost.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
-
         mail($to, $subject, $message, $headers);
-
         return true;
     }
 
     protected function _validate($data)
     {
-        if(!preg_match('#^[a-zA-Z]{1,10}#isu', $data['login'])) {
+        if (!preg_match('#^[a-zA-Z]{1,10}$#isu', $data['login'])) {
             return false;
         }
 
-        if(!preg_match('#^[\d]{4}#isu', $data['password'])) {
+        if (!preg_match('#^[\d]{4}$#isu', $data['password'])) {
             return false;
         }
         return true;

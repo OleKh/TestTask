@@ -16,21 +16,9 @@ class Route
 
     public function route()
     {
-
         $model_name = 'Model_' . $this->controller_name;
-        $pages_arr = array(
-            'internet-magaziny',
-            'sdelajsam');
-
         $page_name = $this->controller_name;
-        if (in_array($this->controller_name, $pages_arr)) {
-            $model_name = 'Model_Main';
-            $this->controller_name = 'main';
-        }
-
-//       $this->controller_name = 'Controller_' . $this->controller_name;
         $this->action_name = 'action_' . $this->action_name;
-
         $model_file = strtolower($model_name) . '.php';
         $model_path = "app/models/" . $model_file;
 
